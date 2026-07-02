@@ -1,0 +1,193 @@
+﻿Question,Answer
+"How do I submit a firewall request?
+What is the process to submit a firewall request?
+Where do I create a firewall request?","Use the Service-Now Firewall Rule Request Form to submit a request for any other Cloud environments, or the on-prem firewalls.
+
+Select Acquired Entity for any AE environment still working with the AE team.
+Select Physical Firewall for all environments where there are NSIS-supported firewalls:
+On-prem DMZs, Acquired Entities that have been handed off from the AE team to Delivery, and VTP firewalls
+Cloud environments that we haven't automated yet: Epic, GCVE, UAIS, MPC/CNV2/Next Generation Cloud Network (NGCN), any single-tenant cloud environments, etc. If you don't see it on the list, please submit a Service-Now Firewall Rule Request Form request!"
+"What are the SLAs for firewall requests?
+How long does it take to process a firewall request?
+What is the turnaround time for firewall requests?","NOTE: Request SLAs are only applicable if all information is correct, and do not include additional approvals or tasks unless noted. Non-standard flows will also require a risk record.
+
+Flows in standards:
+
+5 business days to review, 2-3 business days to implement.
+Flows not in standards:
+
+5 business days to review, 5-7 business days for risk record review (based on risk) due to ESRO approvals, and 2-3 business days to implement."
+"What is the process for cloud migration and firewall rule requests?
+How do I request firewall rules during cloud migration?
+What steps are required for firewall requests in cloud migration?","NOTE: For the overall cloud engagement process and how to request firewall rules for your environment, please review our RACI Cloud/Firewall Progress diagram.
+The high-level steps for a cloud migration:
+Check the HCP site and review the cloud migration overview and cloud service roadmap. This page is starting place to your cloud migration.
+Engage with Cloud Migration & Modernization (CMM) team to discuss your cloud migration strategy. Please refer to the CMM About page to request your engagement.
+Engage with Enterprise Security Architecture (ESA) team to review your proposed application architecture. You will create your System level diagram (SLD) for your architecture from this engagement.
+Create an engagement request in eGRC via the SAMC link at the bottom of the left navbar, and then click on the Start Assessment button.
+Request the required flows crossing firewalls with firewall requests. Please check our FAQ for our intake.
+Once you have stood up your non-prod environment, you must complete the Cloud Security Endorsement before you begin standing up your production environment.
+If you have any additional questions please join our office hours."
+"What security standards apply to firewall requests?
+Which policies must be followed for firewall rules?
+What are the compliance requirements for firewall changes?","5A.1.01.04 Production and non-production environments, regardless of hosting platform (e.g., physical, virtual, or cloud) must be separated and/or isolated physically, or at a minimum logically.
+There are two permitted data practices as approved by the Jason Jones from Enterprise Security Architecture team. In these cases, the type of data in each environment determines whether it is part of the prod environment or not. All environments carrying Protected or Confidential information require the same security, and cannot connect to any environment that is not carrying Protected/Confidential data.
+Example one, at the top, can have Protected or Confidential data in both Prod and Stage, and connections can be allowed between the two. However the as-named Stage environment MUST be part of the Prod environment and have all of the same security practices and technology.
+Example two, at the bottom, has Protected or Confidential data in only the Prod systems. In this case, Stage or other instances MUST NOT be part of the prod environment and MUST NOT have connections to them, and MUST have only public or generated data in them. However, Stage and Dev/UAT/etc. can have connections between them.image.png
+7A.1.01: Workforce Members must not transmit or solicit the transmission of Company Confidential and/or Protected Information via the Internet (e.g., e-mail, data transfer, or instant messaging), unless the information has been approved for transmission to an authorized party and the information is properly protected prior to and during transmission.
+9A.1.01.01: All network services must pass through Company firewalls, using only the defined protocols and services required to provide functionality, per Network Configuration and Controls.
+9D.2.01.01: Firewalls must be managed by a centralized management server or servers.
+Access to Corporate firewalls and firewall management servers must be granted only to those with an appropriate business need and restricted to only the minimum access necessary. Access must be reviewed at least annually or upon a change of roles/responsibilities; access must be removed if no longer needed.
+Corporate firewalls must be actively monitored.
+9D.2.02.03: Firewall policy (ruleset) changes must be made by members of the appropriate Company information technology support organization, and must follow appropriate change control processes. For Optum Technology-supported environments, changes will be made by the Network, Security, and Internet Services (NSIS) team.
+9D.3.01.02: Where feasible, all network services must pass through Company firewalls, using only the defined protocols and services required to provide functionality, per Network Configuration and Controls. All unnecessary and insecure services and protocols are to be disabled.
+Where feasible, firewalls that can identify and create rules using layer 7 applications must be used.
+13A.1.01: Company data, and data entrusted to the Company by members, customers, providers, suppliers, and other third parties, should be identified and classified by the Information Owner as one of the following three data classification levels: Protected Information, Confidential Information, Public Information. These data classification levels are defined in 13A.1.01(A) below.
+13A.3.01.05: The use of encryption should be evaluated, per 13C Encryption Standard. Transmission Across Public Networks (i.e., Internet): Information Owner approval is required. Methods of protection should be considered and used if reasonable and appropriate (i.e., use of secure e-mail). … See the ShareSafe Guideline for more information on transmitting Confidential Information over public networks.
+13C.1.06: A Service-Level Owner (SLO) is accountable for a dataset’s security, access, compliance, and lifecycle management within their business domain or data product.
+Data owners are responsible for ensuring that Confidential and Protected Information is encrypted at rest and in transit, utilizing company approved encryption technologies.
+NOTE: 13C.1.06 has changed! Please read this summary for important information!
+
+14A.1.01: Cloud services must be utilized according to the PADU model (i.e. Preferred, Acceptable, Discouraged, and Unacceptable). Refer to PADU categories in Technology Landscape."
+"How do I test a connection after a firewall request is implemented?
+How can I validate firewall connectivity after implementation?
+What is the process to verify a firewall connection?","Once the request will be submitted and approved, user will receive an email from ISO-Delivery for testing bridge
+
+A tester will be required to attend the firewall testing bridge for checkout and troubleshooting.
+
+Non-Peak Season: 10:15pm CT
+
+Peak Season: 11:15pm CT
+
+Click here to join the meeting
+
+Call in: +1 952-222-7450,,162837389#"
+"What if my firewall rule request is not working as expected after implementation?
+What should I do if my firewall rule is not working?
+How do I troubleshoot firewall connectivity issues?
+Who should I contact if firewall rules are not functioning?","We ask that you join the testing bridge to identify issues in real-time provided in instructions sent via an automated email message related to your request for on-premises requests. If you were unable to join the testing bridge the evening of implementation, you may open an incident with Cyber Defense Support (CDS) to receive assistance.
+
+On-prem: If you need help troubleshooting a completed request, please open an incident ticket in Service-Now to the ISO - Cyber Defense Support group to troubleshoot traffic flows. Create INC in Service-Now.
+
+Cloud: If you need help troubleshooting a completed request, please open an incident ticket in Service-Now to the ISO - Cyber Defense Support group to troubleshoot traffic flows. Create INC in Service-Now.
+
+Please include:
+
+CSP (Cloud Service Provider): [AWS, Azure, or GCP]
+Is it a specific project [EPIC, DSI, UAIS, etc.]
+Single-tenant or Multi-tenant: [Tenant type - if single-tenant, please provide Unique ID]
+Subscription ID: [ID#]
+Hub/Region: [Region and Hub #, e.g. Central 4]
+Vnets/CIDRs associated with subscription: [vnet/CIDR]
+Source IP(s), Destination IP(s), and Port(s) for problem flows
+OFE: If you need help troubleshooting a completed request, please contact ISO - Cyber Defense Support.
+
+Open a GINC in Service-Now Gov: The assignment group for CDS is ISO - Cyber Defense Support, or
+Call the OFE Help Desk to get ticket submitted: 855-819-0929"
+"When do I need an ESA (Enterprise Security Architecture) engagement?
+When is ESA engagement required?
+Do I need ESA approval before deployment?
+When should I engage the ESA team?","New applications entering production or proof of concepts require an ESA Architecture
+
+Per EIS requirements, all systems must have an accurate SLD which has been reviewed and approved by the Enterprise Security Architects (ESA) team.
+
+There are two types of ESA engagement requests:
+
+ESA Architecture Assessment
+For an in-depth review of your application before going into Prod or pilot/PoC. To request an engagement, go to EGRC, click on SAMC at the bottom of the left navbar, and then click on the Start Assessment button:
+
+image.png
+
+Security Consulting Request
+
+For a brief review of a new application or modification to an existing one.
+
+For more information on ESA Consulting & EIS Standards, please check their Sharepoint site."
+"What are the approved patterns for workstations to access databases directly?
+Can workstations access databases directly?
+Is direct database access from user machines permitted?
+Are there restrictions on direct database connections?","Direct database or storage account access from Optum-managed workstations and VDIs is permissible ONLY if these conditions are true:
+
+The resources are on-prem, within Epic on Azure (EoA), or the Next Generation Cloud Network (NGCN/CNV2/MPC).
+The database or storage account must not be a production resource. Access to production resources can only be accomplished via on-prem Security Access Workbench (SAW).
+The data contained in the database or storage account must not include Protected data (PII, PHI, PCI, financial) or Confidential data (non-public company data, intellectual property, trade secrets, or third-party data covered by confidentiality agreements)."
+"How do I open or update a Risk Record?
+How do I create or update a risk record?
+What is the process to open a firewall risk record?
+How can I update an existing risk record?","To create a firewall risk record please go to eGRC and click on ""Open New Record"". In the Request Type, choose Firewall Rules Physical/Firewall Rules Cloud, then describe your reason for the connection and put in the firewall request (RITM#/Algosec ID#) that was submitted. While the eGRC risk record process is detailed, EIS provides documentation for filling out risk records in eGRC in the Risk Services SharePoint site.
+"
+"I need to send or receive files with an external entity, what is the Optum preferred method?
+What is the preferred method for external file transfer?
+How should I send files to external entities securely?
+What tools should be used for secure file transfer?","The preferred method to exchange files with external entities via protocols like FTP, SSH, or SFTP is an enterprise managed application called ECG. Before submitting a firewall request, confirm if ECG can support for file transfer needs by visiting their SharePoint site or contact their shared email at UHGITECGBA_DL@ds.uhc.com."
+"How do I escalate a request?
+How do I escalate a firewall request?
+When should a firewall request be escalated?
+What is the escalation process for firewall requests?","We handle all non-escalated requests in a first-come first-served basis. Escalations are reserved for break/fix, current patient impact, current large revenue loss, or to meet contractual requirements.
+
+At the time of submission, you will have the option to escalate your request by answering the required escalation questions:
+
+Service-Now:Service-Now escalationHCP:HCP escalation
+
+If you are requesting to escalate a request after submission, please fill out the below questions and send them to our DL: NSIS_Firewall_Analysts.
+
+Firewall Request Escalation Questions:
+
+Who is the Director or higher requesting escalation?
+What are the eGRC Risk Records associated to this request, if known?
+What is the email address of the person(s) who will be joining the Firewall Testing Bridge tonight to validate the request implementation? Note: Deployment will not occur if tester is unavailable during Peak Season
+What is the specific deadline required to meet the business purposes and when will this connection be used?
+How will this affect members, clients, customers if not implemented? Please be specific and include number of locations or clients impacted.
+Is there current or direct impact to patient care, if so, please describe?
+How much anticipated financial loss will result to the business if this change is not implemented by the required deadline?
+Is there a contractual agreement associated to this change that states connection must be in place by specific deadline and what is the impact or estimated fines if deadline is not met?
+Peak Season Escalation Additional Questions:
+
+Who is the GL32 approver for this request?
+Does this change directly support a Critical Business Application (CBA) or Peak Season Service? (e.g. AEP, MNR, etc.)"
+"How do I update the NGCN Gold/Global address groups?
+How do I update NGCN address groups?
+What is the process to modify NGCN groups?
+How can I add IPs to NGCN address groups?","Go to Service-Now.
+Select Physical Firewall in the request type. Click the Next button.
+Fill out the request details as appropriate. All required fields must be filled out.
+Select Group Add/Change for the Action Type.
+Select Yes on the Add to Existing Group field.
+Click the Add button. Type in S-GOLD-NGCN-Azure, S-GOLD-NGCN-AWS, or S-GOLD-NGCN-GCP as appropriate for the IP addresses as appropriate for the group name.
+New Host should be left blank.
+Enter a list of new IPs/CIDRs separated by commas on the New IP field. Click Add to add them to the list.
+ESA Engagement RITM can be left blank.
+Risk Record is not required.
+Critical Business App should be set to Not a CBA.
+Escalation should be selected as No.
+Click Next and then Order Now to place the request."
+"How can I join NSIS office hours?
+What is the process to attend firewall office hours?
+Where can I connect with the firewall support team?
+How to reach out to firewall team ?","NSIS FW Analyst Office Hours:
+
+	9:30-10:30am CT M-F
+	________________________________________________________________________________
+	Microsoft Teams meeting
+	Join on your computer, mobile app or room device
+	Click here to join the meeting
+	Meeting ID: 281 487 285 860
+	Passcode: 3BPUJC
+	Download Teams| Join on the web
+	Join with a video conferencing device
+	425899727@t.plcm.vc
+	Video Conference ID: 116 055 245 10
+	Alternate VTC instructions
+	Learn More| Help| Meeting options
+________________________________________________________________________________"
+"I am using a Private Instance, but my DNS name still resolves to a public IP. How do I change this?
+Why does my private instance resolve to a public IP?
+How do I change DNS to use a private IP?
+Why is my private endpoint still using a public IP?","Once you create a private endpoint, you still need to update the DNS name to point to the private instance IPs through IPAM.
+
+Open a ServiceNow Standard Change Request (CR).
+Assign it to yourself or your group member and add a CTASK to it.
+Assign the CTASK to ISO – IPAM and enter the work details in the Detailed Description section of the CR and CTASK. The CR window should start after 01:00 CT and be at least 4 hours in length.
+Add the following to the Affected CIs list in your CR, please schedule the Change between Sunday and Thursday, give ISO - IPAM team a lead time of 24 hours:
+NS0-1 (Internal)
+NS13-1 (External)"

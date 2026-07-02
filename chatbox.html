@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+
+  <title>Chatbot</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    #container {
+      width: 850px;
+      height: 95vh;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    #chat {
+      flex: 1;
+      overflow-y: auto;
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+
+    /* Question */
+    .user {
+      font-size: 16px;
+      font-weight: bold;
+      margin-top: 15px;
+      margin-bottom: 8px;
+      color: black;
+    }
+
+    /* Answer */
+    .bot {
+      font-size: 14px;
+      margin-bottom: 25px;
+      line-height: 1.6;
+      color: black;
+    }
+
+    input {
+      width: 75%;
+      padding: 10px;
+    }
+
+    button {
+      padding: 10px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div id="container">
+  <h3>Chatbot</h3>
+
+  <div id="chat"></div>
+
+  <div>
+    <input id="inputBox" placeholder="Ask your question..." />
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
+
+<script>
+
+// ✅ LINKS (UPDATE THESE)
+const linksMap = {
+  "Service-Now Firewall Rule Request Form": "https://your-servicenow-link.com",
+  "Documentation": "https://your-doc-link.com"
+};
+
+
+// ✅ SMART RENDER FUNCTION
+function renderAnswer(rawText) {
+
+  let lines = rawText.split("\n");
+  let formatted = "";
+  let firstLineDone = false;
+
+  for (let line of lines) {
+
+    line = line.trim();
+    if (!line) continue;
+
+    // ✅ Convert links
+    for (let key in linksMap) {
+      if (line.includes(key)) {
+        line = line.replace(
+          key,
+          `<a href="${linksMap[key]}" target="_blank" style="color:black; text-decoration:underline;">${key}</a>`
+        );
+      }
+    }
+
+    // ✅ Header
+    if (line.toLowerCase().includes("here are the most relevant answers")) {
+      formatted += `<div style="font-weight:bold; margin-bottom:12px;">${line}</div>`;
+    }
+
+    // ✅ Intro line
+    else if (!firstLineDone && line.startsWith("Use")) {
+      formatted += `<div style="margin-bottom:12px;">${line}</div>`;
+      firstLineDone = true;
+    }
+
+    // ✅ Bullets
+    else if (
+      line.startsWith("Select") ||
+      line.match(/^\d+\./) ||
+      line.startsWith("Cloud") ||
+      line.startsWith("NOTE")
+    ) {
+      formatted += `<div style="margin-left:12px; margin-bottom:6px;">&#8226; ${line}</div>`;
+    }
+
+    // ✅ Sub-bullets
+    else if (
+      line.startsWith("On-prem") ||
+      line.includes("DMZ") ||
+      line.includes("Entities")
+    ) {
+      formatted += `<div style="margin-left:28px; margin-bottom:5px;">&#9702; ${line}</div>`;
+    }
+
+    // ✅ Normal text
+    else {
+      formatted += `<div style="margin-bottom:8px;">${line}</div>`;
+    }
+  }
+
+  return `<div class="bot">Bot:<br>${formatted}</div>`;
+}
+
+
+// ✅ SEND FUNCTION
+async function sendMessage() {
+
+  const input = document.getElementById("inputBox");
+  const message = input.value.trim();
+
+  if (!message) return;
+
+  const chat = document.getElementById("chat");
+
+  // ✅ Show user message
+  chat.innerHTML += `<div class="user">You: ${message}</div>`;
+
+  const res = await fetch("http://10.133.51.108:8000/chat", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ message: message })
+  });
+
+  const data = await res.json();
+
+  // ✅ Show bot response
+  chat.innerHTML += renderAnswer(data.reply);
+
+  // ✅ Auto scroll
+  chat.scrollTop = chat.scrollHeight;
+
+  input.value = "";
+}
+
+
+// ✅ ✅ ENTER KEY SUPPORT (CORRECT POSITION)
+document.getElementById("inputBox").addEventListener("keydown", function(event) {
+
+  if (event.key === "Enter" && !event.shiftKey) {
+    event.preventDefault();
+    sendMessage();
+  }
+
+});
+
+</script>
+
+</body>
+</html>
+``
